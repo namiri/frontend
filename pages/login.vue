@@ -39,7 +39,7 @@ export default {
         console.log('res', result)
         this.alert = { type: 'success', message: result.data.message }
         this.loading = false
-        this.$router.push('/inspire')
+        this.$router.push('/index')
       }).catch(error => {
         this.loading = false
         if (error.response && error.response.data) {
