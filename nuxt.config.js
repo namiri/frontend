@@ -22,6 +22,14 @@ module.exports = {
     '~/plugins/vuetify.js',
     '~/api/init.js'
   ],
+  devServer: {
+    proxy: {
+      '/api/v2': {
+        target: 'https://alaatv.com/api/v2',
+        pathRewrite: {'^/api/v2' : ''}
+      }
+    }
+  },
   proxy: 'https://alaatv.com/api/v2/',
   axios: {
     proxy: true
