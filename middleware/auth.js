@@ -4,7 +4,7 @@ export default function ({ store, redirect, route }) {
     return redirect('/login')
   }
   if (userIsLoggedIn) {
-    return redirect('/index')
+    return redirect('/admin')
   }
   return Promise.resolve()
 }

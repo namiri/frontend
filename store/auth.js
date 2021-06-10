@@ -18,9 +18,10 @@ export const actions = {
     return api.auth.login(data)
       .then(response => {
         console.log('auth', response)
-        commit('set_user', response.data.data.user)
-        setAuthToken(response.data.data.access_token)
-        cookies.set('access_token', response.data.data.access_token)
+        // commit('set_user', response.data.data.user)
+        // setAuthToken(response.data.data.access_token)
+        setAuthToken(response.data.token)
+        cookies.set('token', response.data.token)
         return response
       })
   }

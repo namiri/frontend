@@ -33,13 +33,13 @@ export default {
       this.alert = null
       this.loading = true
       this.$store.dispatch('auth/login', {
-        mobile: this.mobile,
+        email: this.mobile,
         password: this.password
       }).then(result => {
         console.log('res', result)
-        this.alert = { type: 'success', message: result.data.message }
+        // this.alert = { type: 'success', message: result.data.message }
         this.loading = false
-        this.$router.push('/index')
+        this.$router.push('/admin')
       }).catch(error => {
         this.loading = false
         if (error.response && error.response.data) {
