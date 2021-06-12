@@ -23,6 +23,9 @@ export default {
       return (this.$store.state.auth || {}).user || null
     }
   },
+  mounted () {
+    console.log(this.$store.state.auth)
+  },
   methods: {
     logOut () {
       this.$store.dispatch('auth/reset').then(() => {

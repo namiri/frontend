@@ -41,6 +41,7 @@ export default {
         this.loading = false
         this.$router.push('/admin')
       }).catch(error => {
+        console.log('error', error)
         this.loading = false
         if (error.response && error.response.data) {
           this.alert = { type: 'error', message: error.response.data.message || error.reponse.status }
