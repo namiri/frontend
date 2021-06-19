@@ -18,6 +18,7 @@
 </template>
 <script>
 export default {
+  middleware: 'auth',
   computed: {
     user () {
       return (this.$store.state.auth || {}).user || null
@@ -27,7 +28,7 @@ export default {
     console.log(this.$store.state.auth)
   },
   methods: {
-    logOut () {
+    logout () {
       this.$store.dispatch('auth/reset').then(() => {
         this.$router.push('/')
       })

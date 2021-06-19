@@ -24,7 +24,7 @@ export const actions = {
       .then(response => {
         // console.log('auth', response)
         commit('set_user')
-        // setAuthToken(response.data.data.access_token)
+        setAuthToken(response.data.data.access_token)
         commit('set_Login')
         setAuthToken(response.data.token)
         cookies.set('token', response.data.token)

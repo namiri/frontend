@@ -15,9 +15,6 @@ module.exports = {
     ]
   },
   css: ['~/assets/style/app.styl'],
-  router: {
-    middleware: ['auth']
-  },
   plugins: [
     '~/plugins/vuetify.js',
     '~/api/init.js'
