@@ -1,15 +1,53 @@
 <template>
-  <div>
-    <h1>jhjhjh</h1>
-    <v-btn color="primary" flat nuxt to="/login">Log In</v-btn>
-    <v-btn color="primary" flat nuxt to="/admin">Admin</v-btn>
-  </div>
+  <v-layout justify-center align-center>
+    <v-card class='elevation-10' style='flex: 0 1 400px'>
+      <v-card-title class='headline'>Log In</v-card-title>
+      <v-card-text>
+        <v-form @submit.prevent='submit'>
+          <v-alert v-if='alert' :type='alert.type' value='true'>{{
+            alert.message
+          }}</v-alert>
+          <v-text-field label='mobile' v-model='mobile' />
+          <v-text-field label='Password' v-model='password' type='password' />
+          <v-btn type='submit' :loading='loading' :disabled='loading'
+            >Log In</v-btn
+          >
+        </v-form>
+      </v-card-text>
+    </v-card>
+  </v-layout>
 </template>
 <script>
 export default {
-  computed: {
-    user () {
-      return (this.$store.state.auth || {}).user || null
+  layout: 'fullscreen',
+  data () {
+    return {
+      mobile: '',
+      password: '',
+      alert: null,
+      loading: false
+    }
+  },
+  methods: {
+    submit () {
+      this.alert = null
+      this.loading = true
+      this.$store.dispatch('auth/login', {
+        mobile: this.mobile,
+        password: this.password
+      }).then(result => {
+        console.log('res', result)
+        // this.alert = { type: 'success', message: result.data.message }
+        this.loading = false
+        console.log({ loading: this.loading })
+        this.$router.push('/profile')
+      }).catch(error => {
+        console.log('error', error)
+        this.loading = false
+        if (error.response && error.response.data) {
+          this.alert = { type: 'error', message: error.response.data.message || error.reponse.status }
+        }
+      })
     }
   }
 }

@@ -3,7 +3,7 @@ export default function ({ store, redirect, route }) {
 
   if (!userIsLoggedIn) {
     console.log('redirecting to login and userIsloggedIn is', userIsLoggedIn)
-    return redirect('/login')
+    return redirect('/')
   }
   // if (userIsLoggedIn) {
   //   console.log('redirecting to admin and userIsloggedIn is', userIsLoggedIn)
